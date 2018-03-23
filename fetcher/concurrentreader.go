@@ -69,15 +69,14 @@ func (m *MultiThreadAPIReader) runner(gen *IDGenerator, threadNum int, wg *sync.
 		default:
 			id := gen.Current()
 			team, err := m.apiClient.GetTeam(id)
+			if valid := gen.GenerateNext(); false == valid {
+				complete = true
+			}
 			if nil != err {
 				log.Printf("Thread %d error %s fetching id %d", threadNum, err.Error(), id)
 				continue
 			}
-
 			m.results <- *team
-			if valid := gen.GenerateNext(); false == valid {
-				complete = true
-			}
 		}
 	}
 	wg.Done()

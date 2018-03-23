@@ -2,9 +2,11 @@ package fetcher
 
 import (
 	"bytes"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"testing"
+	"time"
 
 	"github.com/onefootball/webclient"
 )
@@ -50,6 +52,16 @@ func TestShouldStopConcurrentReading(t *testing.T) {
 
 	multiThreadAPIReader.Start()
 	multiThreadAPIReader.stopChan <- true
+	multiThreadAPIReader.Stop()
+}
+
+func TestShouldStartConcurrentReadingFailed(t *testing.T) {
+	multiThreadAPIReader := NewMultiThreadAPIReader(fakeAPIClient{Error: errors.New("mock error")}, 1, 1)
+
+	multiThreadAPIReader.Start()
+	time.Sleep(3000 * time.Millisecond)
+	multiThreadAPIReader.Stop()
+
 }
 
 var jsonString = `{
