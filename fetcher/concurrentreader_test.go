@@ -53,6 +53,7 @@ func TestShouldStopConcurrentReading(t *testing.T) {
 	multiThreadAPIReader.Start()
 	multiThreadAPIReader.stopChan <- true
 	multiThreadAPIReader.Stop()
+	defer close(multiThreadAPIReader.doneChan)
 }
 
 func TestShouldStartConcurrentReadingFailed(t *testing.T) {

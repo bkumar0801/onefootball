@@ -79,7 +79,7 @@ func (m *MultiThreadAPIReader) runner(gen *IDGenerator, threadNum int, wg *sync.
 			m.results <- *team
 		}
 	}
-	wg.Done()
+	defer wg.Done()
 }
 
 func (m *MultiThreadAPIReader) Read() webclient.Team {
