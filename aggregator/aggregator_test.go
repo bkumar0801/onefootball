@@ -53,7 +53,7 @@ func TestAggregator(t *testing.T) {
 	playerCollectionMock.AssertCalled(t, "Add", "Hermione Granger", 18, "Hogwards")
 }
 
-func TestAggregator_Collection(t *testing.T) {
+func TestAggregatorCollection(t *testing.T) {
 	playerCollectionMock := new(PlayerCollectionMock)
 
 	aggregator := &Aggregator{playerCollection: playerCollectionMock}

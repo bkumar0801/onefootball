@@ -54,20 +54,6 @@ var jsonString = `{
 			"optaId": 1340,
 			"name": "CSKA Moscow",
 			"players": [
-			  {
-				"country": "Sweden",
-				"id": "124",
-				"firstName": "Pontus",
-				"lastName": "Wernbloom",
-				"name": "Pontus Wernbloom",
-				"position": "Midfielder",
-				"number": 3,
-				"birthDate": "1986-06-25",
-				"age": "30",
-				"height": 187,
-				"weight": 85,
-				"thumbnailSrc": "https:\/\/images.onefootball.com\/players\/124.jpg"
-			  }
 			]
 		  }
 		},
