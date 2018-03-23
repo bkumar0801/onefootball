@@ -45,6 +45,13 @@ func TestShouldStartConcurrentReading(t *testing.T) {
 	multiThreadAPIReader.Stop()
 }
 
+func TestShouldStopConcurrentReading(t *testing.T) {
+	multiThreadAPIReader := NewMultiThreadAPIReader(fakeAPIClient{Error: nil}, 1, 1)
+
+	multiThreadAPIReader.Start()
+	multiThreadAPIReader.stopChan <- true
+}
+
 var jsonString = `{
 	"status": "ok",
 	"code": 0,
