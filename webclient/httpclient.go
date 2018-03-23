@@ -23,6 +23,9 @@ func (hc *httpClient) Get(api *url.URL) (*http.Response, error) {
 
 	client := http.Client{}
 	response, err := client.Do(request)
-
+	if err != nil {
+		return nil, err
+	}
+	defer response.Body.Close()
 	return response, err
 }

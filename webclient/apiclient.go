@@ -47,7 +47,6 @@ func (ac *apiClient) GetTeam(id int) (*Team, error) {
 	if nil != err {
 		return nil, err
 	}
-	defer response.Body.Close()
 	teamResponse, err := ac.builder(response.Body)
 	if nil != err {
 		return nil, err
